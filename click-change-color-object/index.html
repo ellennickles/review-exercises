@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+    <title>Review exercise</title>
+</head>
+
+<style>
+    html, body {
+    margin: 0;
+    padding: 0;
+    }
+
+    canvas {
+    display: block;
+    }
+</style>
+
+<body>
+</body>
+
+<script>
+   let bubbles = [];
+
+    function setup() {
+        createCanvas(200, 200);
+        for (let i = 0; i < 10; i++) {
+            let x = random(width);
+            let y = random(height);
+            bubbles.push(new Bubble(x, y));
+        }
+    }
+
+    function mousePressed() {
+        for (let i = 0; i < bubbles.length; i++) {
+            bubbles[i].clicked();
+        }
+    }
+
+    function draw() {
+        background(0);
+        for (let i = 0; i < bubbles.length; i++) {
+            bubbles[i].move();
+            bubbles[i].display();
+        }
+    }
+
+    class Bubble {
+        constructor (x, y) {
+            this.x = x;
+            this.y = y;
+            this.col = color(255, 100);
+        }
+
+        display() {
+            stroke(255);
+            fill(this.col);
+            ellipse(this.x, this.y, 30, 30);
+        }
+
+        move() {
+            this.x = this.x + random(-1, 1);
+            this.y = this.y + random(-1, 1);
+        }
+        
+        clicked() {
+            let d = dist(mouseX, mouseY, this.x, this.y);
+            if (d < 15) {
+            this.col = color(0, random(255), random(100, 255));
+            }
+        }
+    }
+
+</script>
+
+</html>

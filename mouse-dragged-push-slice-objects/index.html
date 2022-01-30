@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+    <title>Review exercise</title>
+</head>
+
+<style>
+    html, body {
+    margin: 0;
+    padding: 0;
+    }
+
+    canvas {
+    display: block;
+    }
+</style>
+
+<body>
+</body>
+
+<script>
+   let bubbles = [];
+
+    function setup() {
+        createCanvas(200, 200);
+    }
+
+    function mouseDragged() {
+        bubbles.push(new Bubble(mouseX, mouseY));
+    }
+
+    function draw() {
+        background(0);
+        for (let i = 0; i < bubbles.length; i++) {
+            bubbles[i].move();
+            bubbles[i].display();
+
+        if (bubbles.length > 20) {
+            bubbles.splice(bubbles[bubbles.length-1], 1);
+            }
+        }
+    }
+
+    class Bubble {
+        constructor(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        display() {
+            stroke(255);
+            fill(255, 0, 150, 50);
+            ellipse(this.x, this.y, 24, 24);
+        }
+
+        move() {
+            this.x = this.x + random(-1, 1);
+            this.y = this.y + random(-1, 1);
+        }
+    }
+
+</script>
+
+</html>
