@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+    <title>Review exercise</title>
+</head>
+
+<style>
+    html, body {
+    margin: 0;
+    padding: 0;
+    }
+
+    canvas {
+    display: block;
+    }
+</style>
+
+<body>
+</body>
+
+<script>
+   let words = ["ಥ_ಥ", "(ง'̀-'́)ง", "(°ロ°)☝", "(｡◕‿‿◕｡)", "( ͡° ͜ʖ ͡°)", "(ᵔᴥᵔ)", "༼ つ ◕_◕ ༽つ"];
+
+    let index = 0;
+
+    function setup() {
+    createCanvas(200, 200);
+    }
+
+    function draw() {
+    background(0);
+
+    fill(255);
+    textSize(32);
+    text(words[index], 10, 100);
+    }
+
+    function mousePressed() {
+    index = index + 1;
+
+    if (index == words.length) {
+        index = 0;
+    }
+    }
+</script>
+
+</html>
